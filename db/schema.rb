@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_153221) do
+ActiveRecord::Schema.define(version: 2019_03_05_162824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_153221) do
     t.string "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "receipe_id"
+    t.index ["receipe_id"], name: "index_ingredients_on_receipe_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -60,6 +62,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_153221) do
     t.date "born_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "doctor_id"
+    t.index ["doctor_id"], name: "index_patients_on_doctor_id"
   end
 
   create_table "receipes", force: :cascade do |t|
@@ -80,4 +84,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_153221) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "ingredients", "receipes"
+  add_foreign_key "patients", "doctors"
 end
