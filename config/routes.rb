@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :meals
   resources :examples, except: %i[new edit]
   # RESTful routes
 
@@ -18,7 +19,8 @@ Rails.application.routes.draw do
 
   # Authors resources
   resources :authors, except: %i[new edit]
-
+  # Appointment Resources
+  resources :appointments, except: %i[new edit]
   # Books resources routes
   resources :books, except: %i[new edit]
   # get '/books' => 'books#index'

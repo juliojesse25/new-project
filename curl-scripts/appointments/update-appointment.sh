@@ -1,14 +1,13 @@
-curl "http://localhost:4741/patients" \
+curl "http://localhost:4741/patients/${ID}" \
   --include \
-  --request POST \
+  --request PATCH \
   --header "Content-Type: application/json" \
   --data '{
     "patient": {
       "first_name": "'"${FIRST}"'",
       "last_name": "'"${LAST}"'",
       "diagnosis": "'"${DIAGNOSIS}"'",
-      "born_on": "'"${BORN_ON}"'",
-      "doctor_id": "'"${DOCTOR_ID}"'"
+      "born_on": "'"${BORN_ON}"'"
     }
   }'
 
